@@ -11,7 +11,7 @@ from PySide2.QtWidgets import QTextEdit
 from pyrdp.pdu import BitmapUpdateData, PlayerPDU
 from pyrdp.enum import BitmapFlags
 from pyrdp.ui import QRemoteDesktop, RDPBitmapToQtImage
-from pyrdp.player import RenderingEventHandler
+from pyrdp.player.RenderingEventHandler import RenderingEventHandler
 from pyrdp.logging import log
 
 

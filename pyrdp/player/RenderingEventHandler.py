@@ -23,14 +23,23 @@ class RenderingEventHandler(BaseEventHandler):
 
     # Generic Video Parsing Routines.
     def onFastPathOutput(self, event: FastPathOutputEvent):
-        print(event)
         if isinstance(event, FastPathBitmapEvent):
             parsed = self._fastPath.parseBitmapEvent(event)
+            self.onBeginRender()
             for bmp in parsed.bitmapUpdateData:
                 self.onBitmap(bmp)
+            self.onFinishRender()
 
     def onSlowPathUpdate(self, pdu: UpdatePDU):
         if pdu.updateDtype == SlowPathUpdateType.SLOWPATH_UPDATETYPE_BITMAP:
             updates = self._bitmap.parseBitmapUpdateData(pdu.updateData)
+            self.onBeginRender()
             for bmp in updates:
                 self.onBitmap(bmp)
+            self.onFinishRender()
+
+    def onBeginRender(self):
+        pass
+
+    def onFinishRender(self):
+        pass

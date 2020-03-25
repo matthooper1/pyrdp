@@ -69,6 +69,7 @@ class LiveWindow(BaseWindow):
         text = self.tabText(index)
         name = text + self.closedTabText
         self.setTabText(index, name)
+        self.eventHandler.cleanup()
 
     def sendKeySequence(self, keys: [Qt.Key]):
         tab: LiveTab = self.currentWidget()
