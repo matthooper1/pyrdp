@@ -379,12 +379,6 @@ class FastPathOutputParser(Parser):
         size = Uint16LE.unpack(stream)
 
         eventType = header & 0xf
-        fragmentation = header & 0b00110000 != 0
-
-        if fragmentation:
-            log.debug("Fragmentation is present in output fastpath event packets."
-                      " Not parsing it and saving to FastPathOutputUpdateEvent.")
-            return FastPathOutputEvent(header, compressionFlags, payload=stream.read(size))
 
         if eventType == FastPathOutputType.FASTPATH_UPDATETYPE_BITMAP:
             return self.parseBitmapEventRaw(stream, header, compressionFlags, size)
