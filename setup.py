@@ -29,7 +29,6 @@ setup(name='pyrdp',
         'bin/pyrdp-mitm.py',
         'bin/pyrdp-player.py',
         'bin/pyrdp-convert.py',
-        'bin/pyrdp-replay.py'
     ],
     install_requires=[
         'appdirs',
@@ -46,6 +45,6 @@ setup(name='pyrdp',
         'twisted',
     ],
     extras_require={
-        "GUI": ['PySide2', 'dbus-python;platform_system!="Windows"', 'notify2;platform_system!="Windows"']
+        "GUI": ['av', 'pillowcase', 'PySide2', 'dbus-python;platform_system!="Windows"', 'notify2;platform_system!="Windows"']
     }
 )
